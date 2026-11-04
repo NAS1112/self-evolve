@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Self-Evolve">
+  <defs>
+    <linearGradient id="se-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3ddc97"/>
+      <stop offset="1" stop-color="#2a9df4"/>
+    </linearGradient>
+    <linearGradient id="se-core" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#1f6feb"/>
+      <stop offset="1" stop-color="#41e0a3"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0d1420"/>
+  <path d="M32 11a21 21 0 1 1-14.85 6.15" fill="none" stroke="url(#se-ring)" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M17.15 17.15 17 26.5l9.2-2.6z" fill="url(#se-ring)"/>
+  <path d="M32 22c-5.5 0-9.5 4.2-9.5 9.5S26.5 42 32 42s9.5-4.2 9.5-9.5S37.5 22 32 22Zm0 5.2c2.5 0 4.3 1.9 4.3 4.3S34.5 36.8 32 36.8s-4.3-1.9-4.3-4.3 1.8-4.3 4.3-4.3Z" fill="url(#se-core)"/>
+  <circle cx="46.5" cy="17.5" r="3.1" fill="#7ff0c2"/>
+  <circle cx="17.5" cy="45.5" r="2.2" fill="#5fb8f5"/>
+</svg>

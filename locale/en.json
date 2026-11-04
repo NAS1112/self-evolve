@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Self Evolve",
+    "description": "Triggers an experience summary when a tool chain runs long (15+ steps) or a shell command fails 3+ times in a row, and persists the lesson to global memory ($DSH_HOME/AGENTS.md). When a long chain also spans several distinct tools, it prompts capturing that new workflow as a reusable skill."
+  }
+}

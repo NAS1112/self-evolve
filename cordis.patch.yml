@@ -1,0 +1,39 @@
+- insert:
+    - id: self-evolve
+      name: '@local/self-evolve'
+      config:
+        # 触发原则：只有「确实出过问题」或「确实走通了一条复杂流程」才复盘。
+        # 单纯跑得长不算价值——正常的开发任务轻松就能超过 15 步。
+        shellFailureThreshold: 3
+        toolFailureThreshold: 2
+        # 长度默认不触发；改成 true 可恢复「满 N 步就复盘」的旧行为。
+        triggerOnLengthOnly: false
+        chainSteps: 15
+        # 记忆分两档（auto）：
+        #   project = <工作区>/AGENTS.md，默认落点，只有这个仓库的会话加载；
+        #   global  = $DSH_HOME/AGENTS.md，每个项目都加载——只放跨项目通用的坑
+        #             与用户的长期偏好（写错地方等于让每个请求都多背一段）。
+        # 想锁死单档改成 global / workspace。
+        # 技能仍然写 ~/.agents/skills（按需加载，不进常驻上下文）。
+        scope: auto
+        # 长链路 + 多工具 => 走通了一条复杂流程，值得固化成技能。
+        # 门槛定得比「一次正常开发」高，避免十几步的普通过程被误判。
+        workflowMinSteps: 25
+        workflowMinDistinctTools: 4
+        # 一次复盘只留一条：复盘的价值在取舍，写第二条通常只是换个说法。
+        maxRecordsPerTurn: 1
+        # 判定模型（火山方舟「决策评估」beta / System One API）：
+        # 写盘前判一次「这条值不值得留」「该进全局还是项目」。
+        # key 可以直接写在 apiKey 里，也可以写 `env:NAME` 或留空读 apiKeyEnv。
+        decision:
+          enabled: true
+          # 影子模式：只把判定写进记录、不拦截写入。跑几天对一遍直觉再改 false。
+          shadow: true
+          model: doubao-seed-2-1-lite-260915
+          baseURL: https://ark.cn-beijing.volces.com/api/v1
+          apiKey: ''
+          apiKeyEnv: A_API_KEY
+          # 判定是锦上添花：900ms 没回来就照常写入（fail-open）。
+          timeoutMs: 900
+          worthThreshold: 0.5
+          scopeMinConfidence: 0.6

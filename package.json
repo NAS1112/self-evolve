@@ -1,0 +1,36 @@
+{
+  "name": "@local/self-evolve",
+  "version": "0.5.2",
+  "license": "MIT",
+  "type": "module",
+  "description": "Self-evolve: after a task ends, review what happened and persist the lesson into global memory and reusable skills, with an in-page evolution animation",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "INSTALL.md",
+    "locale/*.json",
+    "icon.svg",
+    "assets/pet/*.webp",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-tool",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
